@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import PhoneCard from "./PhoneCard";
 
 
 const Phone = () => {
     const [phone, setPhone] =useState();
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
     const phones = useLoaderData();
 
     useEffect(() => {
         const findPhone = phones?.find(phone => phone.id === id);
-        console.log(findPhone);
+     setPhone(findPhone);
     },[id,phones])
+    // console.log(phone);
     return (
         <div>
-            this is phone 
+    <PhoneCard phone={phone}></PhoneCard>
         </div>
     );
 };
