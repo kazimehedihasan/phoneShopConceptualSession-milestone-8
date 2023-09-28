@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import PhoneCard from "./PhoneCard";
+import { Helmet } from "react-helmet-async";
 
 
 const Phone = () => {
@@ -16,6 +17,7 @@ const Phone = () => {
     // console.log(phone);
     return (
         <div>
+            <Helmet><title> phone number :{id}</title></Helmet>
     <PhoneCard phone={phone}></PhoneCard>
         </div>
     );
@@ -23,4 +25,3 @@ const Phone = () => {
 
 export default Phone;
 
-// 1.gonta 30 mint dekha hoiche

@@ -7,24 +7,41 @@ const PhoneCard = ({ phone }) => {
   const { id, image, phone_name, brand_name, price} = phone || {};
 
   const handelAddtoFavorites = () => {
-    const addFavoritesArray = [];
+    const addedFavoritesArray = [];
 
-    const  favoritesItem = JSON.parse(localStorage.getItem("favorites"));
-    if (! favoritesItem) {
-      addFavoritesArray.push(phone);
-      localStorage.setItem("favorites", JSON.stringify(addFavoritesArray));
-      swal("Good job!", "products added successfully", "success");
-    } else {
-      const isExist =  favoritesItem.find((phone) => phone.id === id);
-      if (!isExist) {
-        addFavoritesArray.push(... favoritesItem, phone);
-        localStorage.setItem("favorites", JSON.stringify(addFavoritesArray));
-        swal("Good job!", "products added successfully", "success");
+    const favoriteItems = JSON.parse(localStorage.getItem("favorites"));
+
+    //jokhon kisu nai tokhon e if vitor dhukba
+    if (!favoriteItems) {
+      addedFavoritesArray.push(phone);
+      localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+      swal("Good job!", "Products added successfully!", "success");
+    } 
+    
+    else {
+
+
+      const isExits = favoriteItems.find((phone) => phone.id === id);
+
+      
+      if (!isExits) {
+
+        addedFavoritesArray.push(...favoriteItems, phone);
+        localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+        swal("Good job!", "Products added successfully!", "success");
+       
       } else {
-        swal("Error", "products olredi added", "error");
+        swal("Error!", "No duplicate !", "error");
       }
+
+    
+
+
     }
-    // localStorage.setItem("favorites",JSON.stringify(addFavoritesArray))
+
+
+
+    // localStorage.setItem('test',JSON.stringify([{name:"hasib"},{name:"ph"}]))
   };
   return (
     <div>
